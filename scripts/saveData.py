@@ -64,7 +64,10 @@ def saving_images():
 
 def collect_data():
   global counter
-  df = pd.DataFrame([['BGR%05d.png'%counter,'D%05d'%counter,'BGR%05d.png'%counter, 'D%05d'%counter]], columns=["rgb_img1", "depth_img1","rgb_img2", "depth_img2"])
+  df = pd.DataFrame([['BGR%05d.png'%counter,
+  'D%05d.npy'%counter,'BGR%05d.png'%counter, 'D%05d.npy'%counter]],
+   columns=["rgb_img1", "depth_img1","rgb_img2", "depth_img2"])
+
   if not os.path.isfile('files/data.csv'):
     df.to_csv('files/data.csv', index=False)
   else: # else it exists so append without writing the header
