@@ -50,13 +50,13 @@ def saving_images():
   global first_taken, counter
   counter_2 = counter - 1
   if(first_taken == False):
-    cv2.imwrite('files/images/rgb_img1/BGR%05d.png'%counter, cv_image_rgb)
-    np.save('files/images/depth_img1/D%05d'%counter, cv_image_d)
+    cv2.imwrite('files/images/rgb_img_I/BGR%05d.png'%counter, cv_image_rgb)
+    np.save('files/images/depth_img_I/D%05d'%counter, cv_image_d)
     first_taken = True
     print("First image was taken")
   else:
-    cv2.imwrite('files/images/rgb_img2/BGR%05d.png'%counter, cv_image_rgb)
-    np.save('files/images/depth_img2/D%05d'%counter, cv_image_d)
+    cv2.imwrite('files/images/rgb_img_II/BGR%05d.png'%counter, cv_image_rgb)
+    np.save('files/images/depth_img_II/D%05d'%counter, cv_image_d)
     first_taken = False
     print("Second image was taken")
     collect_data()
@@ -64,13 +64,12 @@ def saving_images():
 
 def collect_data():
   global counter
-  df = pd.DataFrame([['BGR%05d.png'%counter,
-  'D%05d.npy'%counter,'BGR%05d.png'%counter, 'D%05d.npy'%counter]],
+  df = pd.DataFrame([['files/images/rgb_img_I/BGR%05d.png'%counter,'files/images/depth_img_I/D%05d.npy'%counter,'files/images/rgb_img_II/BGR%05d.png'%counter, 'files/images/depth_img_II/D%05d.npy'%counter]],
    columns=["rgb_img1", "depth_img1","rgb_img2", "depth_img2"])
 
   if not os.path.isfile('files/data.csv'):
     df.to_csv('files/data.csv', index=False)
-  else: # else it exists so append without writing the header
+  else: # else it exists so append without header
     df.to_csv('files/data.csv', mode='a', header=False, index=False)
 
 def set_counter():

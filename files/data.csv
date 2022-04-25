@@ -1,8 +1,5 @@
 rgb_img1,depth_img1,rgb_img2,depth_img2
-BGR00000.png,D00000.npy,BGR00000.png,D00000.npy
-BGR00001.png,D00001.npy,BGR00001.png,D00001.npy
-BGR00002.png,D00002.npy,BGR00002.png,D00002.npy
-BGR00003.png,D00003.npy,BGR00003.png,D00003.npy
-BGR00004.png,D00004.npy,BGR00004.png,D00004.npy
-BGR00005.png,D00005.npy,BGR00005.png,D00005.npy
-BGR00006.png,D00006.npy,BGR00006.png,D00006.npy
+files/images/rgb_img_I/BGR00000.png,files/images/depth_img_I/D00000.npy,files/images/rgb_img_II/BGR00000.png,files/images/depth_img_II/D00000.npy
+files/images/rgb_img_I/BGR00001.png,files/images/depth_img_I/D00001.npy,files/images/rgb_img_II/BGR00001.png,files/images/depth_img_II/D00001.npy
+files/images/rgb_img_I/BGR00002.png,files/images/depth_img_I/D00002.npy,files/images/rgb_img_II/BGR00002.png,files/images/depth_img_II/D00002.npy
+files/images/rgb_img_I/BGR00003.png,files/images/depth_img_I/D00003.npy,files/images/rgb_img_II/BGR00003.png,files/images/depth_img_II/D00003.npy
