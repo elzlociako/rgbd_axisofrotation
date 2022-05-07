@@ -107,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES rgbd_cam
-#  CATKIN_DEPENDS cv_bridge opencv-python pandas rospy std_msgs
+#  CATKIN_DEPENDS cv_bridge opencv-python pandas rospy std_msgs open3d
 #  DEPENDS system_lib
 )
 

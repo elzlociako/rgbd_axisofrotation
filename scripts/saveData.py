@@ -32,7 +32,7 @@ def CreatePointCloud(RGB_PATH, DEPTH_PATH):
     PointCloud.transform([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]]) # Flip it, otherwise the pointcloud will be upside down
     return PointCloud
 
-def PickPoints(pcd):
+def PickPoints(pcd): # Allows to pick axis of rotation points 
   vis = o3d.visualization.VisualizerWithEditing()
   vis.create_window()
   vis.add_geometry(pcd)
@@ -40,8 +40,10 @@ def PickPoints(pcd):
   vis.destroy_window()
   pc_arr = np.asarray(pcd.points)
   point_id = vis.get_picked_points()
-
-  return [pc_arr[point_id[0]],pc_arr[point_id[1]]]
+  if(len(point_id) < 2):
+    return [None, None], False
+  else:
+    return [pc_arr[point_id[0]],pc_arr[point_id[1]]], True
 
 class image_converter:
   def __init__(self):
@@ -96,7 +98,8 @@ class image_converter:
       print(e)
 
 def SaveImg():
-  global counter, part_num
+  global counter, part_num, axis_points_1, axis_points_2
+  correctly_picked = False 
   if(part_num == 1):
     cv2.imwrite('files/images/rgb_img_I/RGB%05d.png'%counter, img_RGB)
     np.save('files/info/rgb_info_I/RGB%05d'%counter, imgI_RGB)
@@ -104,7 +107,8 @@ def SaveImg():
     np.save('files/info/depth_info_I/D%05d'%counter, imgI_DPH)
     part_num = 2
     PC = CreatePointCloud('files/images/rgb_img_I/RGB%05d.png'%counter, 'files/images/depth_img_I/D%05d.npy'%counter)
-    PickPoints(PC)
+    while(correctly_picked == False):
+      axis_points_1, correctly_picked = PickPoints(PC)
     print("First image was taken")
   else:
     cv2.imwrite('files/images/rgb_img_II/RGB%05d.png'%counter, img_RGB)
@@ -113,7 +117,8 @@ def SaveImg():
     np.save('files/info/depth_info_II/D%05d'%counter, imgI_DPH)
     part_num = 1
     PC = CreatePointCloud('files/images/rgb_img_II/RGB%05d.png'%counter, 'files/images/depth_img_II/D%05d.npy'%counter)
-    PickPoints(PC)
+    while(correctly_picked == False):
+      axis_points_2, correctly_picked = PickPoints(PC)
     print("Second image was taken")
     CollectData()
     counter += 1
@@ -132,12 +137,14 @@ def CollectData():
         'files/info/rgb_info_I/RGB%05d.npy'%counter, # INFO
         'files/info/rgb_info_II/RGB%05d.npy'%counter, # INFO
         'files/info/depth_info_I/D%05d.npy'%counter, # INFO
-        'files/info/depth_info_II/D%05d.npy'%counter # INFO
+        'files/info/depth_info_II/D%05d.npy'%counter, # INFO
+        axis_points_1,
+        axis_points_2
       ]
     ],
     columns=
     [
-      "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "rgb_info_I", "rgb_info_II","depth_info_I", "depth_info_II"
+      "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "rgb_info_I", "rgb_info_II","depth_info_I", "depth_info_II", "AXIS_I", "AXIS_II"
     ]
   )
  
