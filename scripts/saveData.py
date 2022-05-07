@@ -109,6 +109,7 @@ def SaveImg():
     PC = CreatePointCloud('files/images/rgb_img_I/RGB%05d.png'%counter, 'files/images/depth_img_I/D%05d.npy'%counter)
     while(correctly_picked == False):
       axis_points_1, correctly_picked = PickPoints(PC)
+    print(np.asarray(axis_points_1))
     print("First image was taken")
   else:
     cv2.imwrite('files/images/rgb_img_II/RGB%05d.png'%counter, img_RGB)
@@ -119,6 +120,7 @@ def SaveImg():
     PC = CreatePointCloud('files/images/rgb_img_II/RGB%05d.png'%counter, 'files/images/depth_img_II/D%05d.npy'%counter)
     while(correctly_picked == False):
       axis_points_2, correctly_picked = PickPoints(PC)
+    
     print("Second image was taken")
     CollectData()
     counter += 1
@@ -138,8 +140,8 @@ def CollectData():
         'files/info/rgb_info_II/RGB%05d.npy'%counter, # INFO
         'files/info/depth_info_I/D%05d.npy'%counter, # INFO
         'files/info/depth_info_II/D%05d.npy'%counter, # INFO
-        axis_points_1,
-        axis_points_2
+        np.asarray(axis_points_1),
+        np.asarray(axis_points_2)
       ]
     ],
     columns=
