@@ -1,13 +1,4 @@
-rgb_img_I,rgb_img_II,depth_img_I,depth_img_II,rgb_info_I,rgb_info_II,depth_info_I,depth_info_II,AXIS_I,AXIS_II
-files/images/rgb_img_I/BGR00000.png,files/images/rgb_img_II/BGR00000.png,files/images/depth_img_I/D00000.npy,files/images/depth_img_II/D00000.npy,files/info/rgb_info_I/RGB00000.npy,files/info/rgb_info_II/RGB00000.npy,files/info/depth_info_I/D00000.npy,files/info/depth_info_II/D00000.npy,"[[ 0.04960114 -0.19706399 -0.46919999]
- [ 0.07074762  0.15374762 -0.41499999]]","[[ 0.067356    0.14290876 -0.37419999]
- [ 0.05520095 -0.15967524 -0.389     ]]"
-files/images/rgb_img_I/BGR00001.png,files/images/rgb_img_II/BGR00001.png,files/images/depth_img_I/D00001.npy,files/images/depth_img_II/D00001.npy,files/info/rgb_info_I/RGB00001.npy,files/info/rgb_info_II/RGB00001.npy,files/info/depth_info_I/D00001.npy,files/info/depth_info_II/D00001.npy,"[[ 0.04987543 -0.18713943 -0.44760001]
- [ 0.06721372  0.15948343 -0.41760001]]","[[ 0.08684667  0.13930915 -0.37220001]
- [ 0.07201543 -0.15513771 -0.37619999]]"
-files/images/rgb_img_I/BGR00002.png,files/images/rgb_img_II/BGR00002.png,files/images/depth_img_I/D00002.npy,files/images/depth_img_II/D00002.npy,files/info/rgb_info_I/RGB00002.npy,files/info/rgb_info_II/RGB00002.npy,files/info/depth_info_I/D00002.npy,files/info/depth_info_II/D00002.npy,"[[ 0.10196323 -0.14932056 -0.50739998]
- [ 0.08863124  0.18131162 -0.47240001]]","[[ 0.08818057 -0.153424   -0.5352    ]
- [ 0.08374267  0.184604   -0.4858    ]]"
-files/images/rgb_img_I/BGR00003.png,files/images/rgb_img_II/BGR00003.png,files/images/depth_img_I/D00003.npy,files/images/depth_img_II/D00003.npy,files/info/rgb_info_I/RGB00003.npy,files/info/rgb_info_II/RGB00003.npy,files/info/depth_info_I/D00003.npy,files/info/depth_info_II/D00003.npy,"[[ 0.1040581  -0.18167981 -0.59060001]
- [ 0.10838686  0.17633086 -0.56620002]]","[[ 0.099636   -0.17887867 -0.61180001]
- [ 0.09951714  0.17891333 -0.57099998]]"
+object_name,rgb_img_I,rgb_img_II,depth_img_I,depth_img_II,camera_info,axis_point_1,axis_point_2
+Drzwi,files/images/rgb_img_I/BGR00000.png,files/images/rgb_img_II/BGR00000.png,files/images/depth_img_I/D00000.npy,files/images/depth_img_II/D00000.npy,files/cam_info/INFO00000.npy,[-0.01055724  0.15524371 -0.4267    ],[-0.00669152 -0.17395152 -0.41509999]
+Drzwi,files/images/rgb_img_I/BGR00001.png,files/images/rgb_img_II/BGR00001.png,files/images/depth_img_I/D00001.npy,files/images/depth_img_II/D00001.npy,files/cam_info/INFO00001.npy,[-0.01166743  0.15464628 -0.42279999],[-0.00789    -0.17394905 -0.41510001]
+Drzwi,files/images/rgb_img_I/BGR00002.png,files/images/rgb_img_II/BGR00002.png,files/images/depth_img_I/D00002.npy,files/images/depth_img_II/D00002.npy,files/cam_info/INFO00002.npy,[ 0.00948686  0.14944343 -0.4536    ],[ 0.00385657 -0.18967828 -0.4506    ]

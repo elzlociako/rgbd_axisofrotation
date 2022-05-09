@@ -98,55 +98,55 @@ class image_converter:
       print(e)
 
 def SaveImg():
-  global counter, part_num, axis_points_1, axis_points_2
+  global counter, part_num, axis_points_1, axis_points_2, axis_points, object_name
+  axis_points = [[0,0,0] , [0,0,0]]
   correctly_picked = False 
   if(part_num == 1):
     cv2.imwrite('files/images/rgb_img_I/RGB%05d.png'%counter, img_RGB)
-    np.save('files/info/rgb_info_I/RGB%05d'%counter, imgI_RGB)
     np.save('files/images/depth_img_I/D%05d'%counter, img_DPH)
-    np.save('files/info/depth_info_I/D%05d'%counter, imgI_DPH)
     part_num = 2
     PC = CreatePointCloud('files/images/rgb_img_I/RGB%05d.png'%counter, 'files/images/depth_img_I/D%05d.npy'%counter)
     while(correctly_picked == False):
       axis_points_1, correctly_picked = PickPoints(PC)
-    print(np.asarray(axis_points_1))
+
     print("First image was taken")
   else:
     cv2.imwrite('files/images/rgb_img_II/RGB%05d.png'%counter, img_RGB)
-    np.save('files/info/rgb_info_II/RGB%05d'%counter, imgI_RGB)
     np.save('files/images/depth_img_II/D%05d'%counter, img_DPH)
-    np.save('files/info/depth_info_II/D%05d'%counter, imgI_DPH)
+    np.save('files/cam_info/INFO%05d'%counter, imgI_RGB)
     part_num = 1
+
     PC = CreatePointCloud('files/images/rgb_img_II/RGB%05d.png'%counter, 'files/images/depth_img_II/D%05d.npy'%counter)
     while(correctly_picked == False):
       axis_points_2, correctly_picked = PickPoints(PC)
-    
     print("Second image was taken")
+
+    for i in range(2):
+      for j in range(3):
+        axis_points[i][j] = (axis_points_1[i][j] + axis_points_2[i][j]) / 2
+
+    object_name = input("Instert object name: ")
     CollectData()
     counter += 1
-
-
 
 def CollectData():
   global counter
   df = pd.DataFrame(
     [
       [
+        object_name,
         'files/images/rgb_img_I/BGR%05d.png'%counter, 
         'files/images/rgb_img_II/BGR%05d.png'%counter, 
         'files/images/depth_img_I/D%05d.npy'%counter,
         'files/images/depth_img_II/D%05d.npy'%counter,
-        'files/info/rgb_info_I/RGB%05d.npy'%counter, # INFO
-        'files/info/rgb_info_II/RGB%05d.npy'%counter, # INFO
-        'files/info/depth_info_I/D%05d.npy'%counter, # INFO
-        'files/info/depth_info_II/D%05d.npy'%counter, # INFO
-        np.asarray(axis_points_1),
-        np.asarray(axis_points_2)
+        'files/cam_info/INFO%05d.npy'%counter, 
+        np.asarray(axis_points[0]),
+        np.asarray(axis_points[1]),
       ]
     ],
     columns=
     [
-      "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "rgb_info_I", "rgb_info_II","depth_info_I", "depth_info_II", "AXIS_I", "AXIS_II"
+      "object_name", "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "camera_info", "axis_point_1", "axis_point_2"
     ]
   )
  

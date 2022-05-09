@@ -68,7 +68,7 @@ class image_converter:
                    0.6, (0, 255, 255), 1, cv2.LINE_AA)
 
     key = cv2.waitKey(1)
-    cv2.imshow('OK', img_RGB_copy)
+    cv2.imshow('Gotta Catch ‘Em All!', img_RGB_copy)
 
     if key == ord('s'):
       SaveImg()
