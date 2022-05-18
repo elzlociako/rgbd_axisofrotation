@@ -1,4 +1,0 @@
-object_name,rgb_img_I,rgb_img_II,depth_img_I,depth_img_II,camera_info,axis_point_1,axis_point_2
-Drzwi,files/images/rgb_img_I/BGR00000.png,files/images/rgb_img_II/BGR00000.png,files/images/depth_img_I/D00000.npy,files/images/depth_img_II/D00000.npy,files/cam_info/INFO00000.npy,[-0.01055724  0.15524371 -0.4267    ],[-0.00669152 -0.17395152 -0.41509999]
-Drzwi,files/images/rgb_img_I/BGR00001.png,files/images/rgb_img_II/BGR00001.png,files/images/depth_img_I/D00001.npy,files/images/depth_img_II/D00001.npy,files/cam_info/INFO00001.npy,[-0.01166743  0.15464628 -0.42279999],[-0.00789    -0.17394905 -0.41510001]
-Drzwi,files/images/rgb_img_I/BGR00002.png,files/images/rgb_img_II/BGR00002.png,files/images/depth_img_I/D00002.npy,files/images/depth_img_II/D00002.npy,files/cam_info/INFO00002.npy,[ 0.00948686  0.14944343 -0.4536    ],[ 0.00385657 -0.18967828 -0.4506    ]

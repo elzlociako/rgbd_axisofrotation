@@ -140,13 +140,17 @@ def CollectData():
         'files/images/depth_img_I/D%05d.npy'%counter,
         'files/images/depth_img_II/D%05d.npy'%counter,
         'files/cam_info/INFO%05d.npy'%counter, 
-        np.asarray(axis_points[0]),
-        np.asarray(axis_points[1]),
+        np.asarray(axis_points[0][0]),
+        np.asarray(axis_points[0][1]),
+        np.asarray(axis_points[0][2]),
+        np.asarray(axis_points[1][0]),
+        np.asarray(axis_points[1][1]),
+        np.asarray(axis_points[1][2]),
       ]
     ],
     columns=
     [
-      "object_name", "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "camera_info", "axis_point_1", "axis_point_2"
+      "object_name", "rgb_img_I", "rgb_img_II", "depth_img_I", "depth_img_II", "camera_info", "x1", "y1", "z1", "x2", "y2", "z2"
     ]
   )
  
